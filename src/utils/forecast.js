@@ -13,10 +13,13 @@ const forecast = (latitude, longitude, callback) => {
             callback('Unable to find weather', undefined);
         }
         else {
+            console.log(body.daily.data[0]);
             callback(undefined, {
                 temp: body.currently['temperature'],
                 rain: body.currently['precipProbability'],
-                weather: body.daily.summary
+                weather: body.daily.summary,
+                highTemp: body.daily.data[0].temperatureMax,
+                lowTemp: body.daily.data[0].temperatureMin
             });
         }
     })

@@ -59,7 +59,7 @@ app.get('/weather', (req, res) => {
             })
         }
         else {
-            forecast(latitude, longitude, (error, { temp, rain, weather }) => {
+            forecast(latitude, longitude, (error, { temp, rain, weather, highTemp, lowTemp }) => {
                 if (error) {
                     res.send({
                         error: error
@@ -70,7 +70,9 @@ app.get('/weather', (req, res) => {
                         location: location,
                         temp: temp,
                         rain: rain,
-                        forecast: weather
+                        forecast: weather,
+                        highTemp,
+                        lowTemp
                     })
                 }
             })
